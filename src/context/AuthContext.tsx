@@ -63,7 +63,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       try {
         console.log('AuthProvider: Checking for previous sign-in...');
         const userInfo = await GoogleSignin.signInSilently();
-        const userObj = userInfo?.data?.user || userInfo?.user;
+        if (userInfo.type !== "success") {
+          console.log('AuthProvider: No previous Google sign-in found');
+          return;
+        }
+        const userObj = userInfo.data.user;
         
         if (userObj) {
           console.log('AuthProvider: Silent sign-in success for', userObj.name);
@@ -74,8 +78,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (tokens && tokens.accessToken) {
             setGoogleToken(tokens.accessToken);
           }
-        } else {
-          console.log('AuthProvider: Silent sign-in returned no user info');
         }
       } catch (error) {
         console.log('AuthProvider: Silent sign-in attempt failed (normal if not logged in):', error);

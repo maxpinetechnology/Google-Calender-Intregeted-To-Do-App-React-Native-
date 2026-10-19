@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity, View, ActivityIndicator } from "react-native";
+import { Alert, StyleSheet, TouchableOpacity, View, ActivityIndicator } from "react-native";
 import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
 import { Ionicons } from "@expo/vector-icons";
 import { useAppTheme } from "@/context/ThemeContext";
@@ -26,10 +26,12 @@ export default function GoogleLogin({ onSuccess }: { onSuccess?: (token: string)
       
       console.log('GoogleLogin: Calling signIn()...');
       const userInfo = await GoogleSignin.signIn();
+      if (userInfo.type !== "success") {
+        return;
+      }
       console.log('GoogleLogin: signIn success. userInfo structure:', Object.keys(userInfo));
       
-      // Save user profile info with safety checks (Handle v11+ structure with .data)
-      const userObj = userInfo.data?.user || userInfo.user || userInfo; 
+      const userObj = userInfo.data.user;
       if (userObj) {
         const name = userObj.givenName || userObj.name || "User";
         console.log('GoogleLogin: setting user name to', name);
@@ -49,16 +51,30 @@ export default function GoogleLogin({ onSuccess }: { onSuccess?: (token: string)
         console.log('GoogleLogin: setting google token');
         await setGoogleToken(token);
         onSuccess?.(token);
+      } else {
+        throw new Error("Google Sign-In completed but did not return an access token.");
       }
-    } catch (error: any) {
-      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+    } catch (error: unknown) {
+      const errorCode =
+        typeof error === "object" && error !== null && "code" in error &&
+        typeof error.code === "string"
+          ? error.code
+          : null;
+
+      if (errorCode === statusCodes.SIGN_IN_CANCELLED) {
         console.log("GoogleLogin: Sign-in cancelled by user");
-      } else if (error.code === statusCodes.IN_PROGRESS) {
+      } else if (errorCode === statusCodes.IN_PROGRESS) {
         console.log("GoogleLogin: Sign-in already in progress");
-      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      } else if (errorCode === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         console.error("GoogleLogin: Play Services not available");
       } else {
         console.error("GoogleLogin: Error during sign-in process:", error);
+        const message = error instanceof Error ? error.message : String(error);
+        const detail = errorCode ? `Error code: ${errorCode}\n\n` : "";
+        Alert.alert(
+          "Google Sign-In failed",
+          `${detail}${message}\n\nFor Android, verify the Web client ID, app package name, and signing certificate SHA-1 in the same Google Cloud project.`
+        );
       }
     } finally {
       setIsLoading(false);
