@@ -1,7 +1,13 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
-const WEB_CLIENT_ID = "355405822526-jbh4eqkgn90pgvp00mo95f25p09h4f7j.apps.googleusercontent.com";
+const WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID;
+
+if (!WEB_CLIENT_ID) {
+  throw new Error(
+    "Missing EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID. Set your Google Web Client ID in .env."
+  );
+}
 
 // Configure once at module level
 GoogleSignin.configure({
