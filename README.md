@@ -1,4 +1,4 @@
-# Maxpine Flow ⚡
+# MaxTrack ⚡
 
 > **A sophisticated daily task management and timeline productivity application with bidirectional Google Calendar synchronization.**
 
@@ -12,9 +12,9 @@
 
 ## 📖 Overview
 
-**Maxpine Flow** (internal: `time-lineup`) is an elegant mobile application engineered to streamline daily routines and task scheduling. Built on top of **React Native** and **Expo SDK 57**, it bridges local task workflows with **Google Calendar**, providing an integrated timeline of your day.
+**MaxTrack** is an elegant mobile application engineered to streamline daily routines and task scheduling. Built on top of **React Native** and **Expo SDK 57**, it bridges local task workflows with **Google Calendar**, providing an integrated timeline of your day.
 
-Whether tracking daily work deliverables, scheduling personal habits, or reviewing monthly productivity trends, Maxpine Flow delivers a fluid experience with tactile haptic responses, glassmorphic UI cards, smooth spring animations, and native device notifications.
+Whether tracking daily work deliverables, scheduling personal habits, or reviewing monthly productivity trends, MaxTrack delivers a fluid experience with tactile haptic responses, glassmorphic UI cards, smooth spring animations, and native device notifications.
 
 ---
 
@@ -129,7 +129,7 @@ The app uses `@react-native-google-signin/google-signin` configured with a Web C
 1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
 2. Create an **OAuth 2.0 Client ID**:
    - **Web Application Client ID**: Used for requesting offline access and token exchange.
-   - **Android Client ID**: Configure with your package name (`com.rajayush.timelineup`) and your local debug/release keystore **SHA-1 fingerprint**.
+   - **Android Client ID**: Configure with your package name (`com.maxpinetechnology.maxtrack`) and your local debug/release keystore **SHA-1 fingerprint**.
 3. Enable the **Google Calendar API** in your Google Cloud project.
 4. Set `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` in `.env` to your project's Web Client ID. `.env` is ignored by Git.
 
@@ -167,7 +167,7 @@ From the terminal interface:
 
 ## 🔐 Permissions & Privacy
 
-Maxpine Flow requests minimal permissions necessary for productivity features:
+MaxTrack requests minimal permissions necessary for productivity features:
 - **`SCHEDULE_EXACT_ALARM` & `VIBRATE`**: Required on Android to deliver accurate time-based task reminders.
 - **Google Calendar Scope (`.../auth/calendar`)**: Used solely to sync your events between Google Calendar and your local timeline. Your credentials and calendar data remain stored directly on your device.
 
@@ -175,4 +175,4 @@ Maxpine Flow requests minimal permissions necessary for productivity features:
 
 ## 📄 License
 
-Private repository. Copyright © 2026 **Maxpine Flow Inc.** All rights reserved.
+Private repository. Copyright © 2026 **MaxTrack Inc.** All rights reserved.

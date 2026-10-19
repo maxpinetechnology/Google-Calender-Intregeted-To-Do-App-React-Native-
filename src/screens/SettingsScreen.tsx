@@ -191,7 +191,7 @@ export default function SettingsScreen() {
             <ThemedText style={[styles.sectionTitle, { color: theme.secondary }]}>Support</ThemedText>
             <SettingItem 
               icon="information-circle-outline" 
-              title="About Maxpine Flow" 
+              title="About MaxTrack" 
               onPress={() => router.push('/about')}
               theme={theme}
             />

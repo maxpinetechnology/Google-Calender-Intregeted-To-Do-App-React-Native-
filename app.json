@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "Maxpine Flow",
-    "slug": "time-lineup",
-    "owner": "rajayush",
+    "name": "MaxTrack",
+    "slug": "maxtrack",
+    "owner": "maxpinetechnology",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/appicon.png",
-    "scheme": "time-lineup",
+    "scheme": "maxtrack",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.maxpinetechnology.maxtrack"
     },
     "android": {
       "adaptiveIcon": {
@@ -17,7 +18,7 @@
         "foregroundImage": "./src/assets/images/appicon.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.rajayush.timelineup",
+      "package": "com.maxpinetechnology.maxtrack",
       "permissions": ["SCHEDULE_EXACT_ALARM", "VIBRATE"]
     },
     "web": {

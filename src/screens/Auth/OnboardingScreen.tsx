@@ -36,7 +36,7 @@ export default function OnboardingScreen() {
         <View style={styles.topSection}>
           <Animated.View entering={FadeInDown.delay(200).duration(800)} style={styles.header}>
             <ThemedText style={[styles.welcomeLabel, { color: theme.textSecondary }]}>Welcome to</ThemedText>
-            <ThemedText style={[styles.brandTitle, { color: theme.primary }]}>Maxpine Flow</ThemedText>
+            <ThemedText style={[styles.brandTitle, { color: theme.primary }]}>MaxTrack</ThemedText>
             <View style={[styles.titleUnderline, { backgroundColor: theme.accent }]} />
           </Animated.View>
 

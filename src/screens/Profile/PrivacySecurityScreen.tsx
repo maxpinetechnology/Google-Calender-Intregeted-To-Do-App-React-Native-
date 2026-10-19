@@ -68,7 +68,7 @@ export default function PrivacySecurityScreen() {
           <SecuritySection 
             title="Google Calendar Integration" 
             icon="calendar-outline" 
-            content="Maxpine Flow syncs with your Google Calendar to help you manage your schedule. We only request permissions to read and create events in your calendar. Your data is never stored on external servers; it remains between your device and Google."
+            content="MaxTrack syncs with your Google Calendar to help you manage your schedule. We only request permissions to read and create events in your calendar. Your data is never stored on external servers; it remains between your device and Google."
             theme={theme}
           />
         </RevealUp>
@@ -101,7 +101,7 @@ export default function PrivacySecurityScreen() {
         </RevealUp>
 
         <View style={styles.footerInfo}>
-          <ThemedText style={[styles.footerText, { color: theme.textSecondary, opacity: 0.5 }]}>Maxpine Flow v1.0.0</ThemedText>
+          <ThemedText style={[styles.footerText, { color: theme.textSecondary, opacity: 0.5 }]}>MaxTrack v1.0.0</ThemedText>
         </View>
       </ScrollView>
     </ThemedView> 
