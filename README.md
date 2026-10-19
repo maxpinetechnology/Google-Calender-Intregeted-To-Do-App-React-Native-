@@ -124,14 +124,16 @@ npm install
 
 ### 2. Google OAuth Configuration
 
-The app uses `@react-native-google-signin/google-signin` configured with a Web Client ID in `src/context/AuthContext.tsx`.
+The app uses `@react-native-google-signin/google-signin` configured with a Web Client ID from `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID`.
 
 1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
 2. Create an **OAuth 2.0 Client ID**:
    - **Web Application Client ID**: Used for requesting offline access and token exchange.
    - **Android Client ID**: Configure with your package name (`com.rajayush.timelineup`) and your local debug/release keystore **SHA-1 fingerprint**.
 3. Enable the **Google Calendar API** in your Google Cloud project.
-4. Replace the `WEB_CLIENT_ID` in `src/context/AuthContext.tsx` with your project's client ID if running under a new Google Cloud project.
+4. Set `EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID` in `.env` to your project's Web Client ID. `.env` is ignored by Git.
+
+Expo embeds `EXPO_PUBLIC_` values in the app bundle, so this client ID is public configuration, not a private secret. Never put private keys, client secrets, or other server credentials in an `EXPO_PUBLIC_` variable.
 
 ### 3. Run the Development Server
 
