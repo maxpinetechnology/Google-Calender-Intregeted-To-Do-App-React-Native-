@@ -43,7 +43,7 @@ export default function AboutScreen() {
           <View style={styles.heroSection}>
             <View style={[styles.logoContainer, { backgroundColor: theme.surface }]}>
               <Image 
-                source={require('@/assets/images/appicon.png')} 
+                source={require('@/assets/maxtrack_icon_no_text.png')} 
                 style={styles.logo}
                 resizeMode="contain"
               />

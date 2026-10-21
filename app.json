@@ -15,10 +15,11 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF",
-        "foregroundImage": "./src/assets/images/appicon.png"
+        "foregroundImage": "./src/assets/images/adaptive-icon.png"
       },
       "predictiveBackGestureEnabled": false,
       "package": "com.maxpinetechnology.maxtrack",
+      "versionCode": 1,
       "permissions": ["SCHEDULE_EXACT_ALARM", "VIBRATE"]
     },
     "web": {

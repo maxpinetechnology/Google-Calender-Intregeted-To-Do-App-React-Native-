@@ -43,7 +43,7 @@ export default function OnboardingScreen() {
           <Animated.View entering={FadeIn.delay(400).duration(1000)} style={styles.illustrationContainer}>
             <View style={[styles.glowCircle, { backgroundColor: theme.accent + '20' }]} />
             <Image 
-              source={require('@/assets/images/onboarding.png')} 
+              source={require('@/assets/maxtrack_icon_no_text.png')} 
               style={styles.illustration}
               resizeMode="contain"
             />
@@ -124,8 +124,8 @@ const styles = StyleSheet.create({
     borderRadius: width * 0.45,
   },
   illustration: {
-    width: '100%',
-    height: '100%',
+    width: '80%',
+    height: '80%',
   },
   bottomSection: {
     width: '100%',
