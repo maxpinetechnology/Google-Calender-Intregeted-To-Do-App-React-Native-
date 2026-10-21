@@ -3,18 +3,19 @@ import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
 const WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID;
 
-if (!WEB_CLIENT_ID) {
-  throw new Error(
-    "Missing EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID. Set your Google Web Client ID in .env."
-  );
+if (WEB_CLIENT_ID) {
+  try {
+    GoogleSignin.configure({
+      webClientId: WEB_CLIENT_ID,
+      scopes: ["https://www.googleapis.com/auth/calendar"],
+      offlineAccess: true,
+    });
+  } catch (error) {
+    console.warn("AuthProvider: GoogleSignin configuration failed", error);
+  }
+} else {
+  console.warn("AuthProvider: Missing EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID. Please set it in .env");
 }
-
-// Configure once at module level
-GoogleSignin.configure({
-  webClientId: WEB_CLIENT_ID,
-  scopes: ["https://www.googleapis.com/auth/calendar"],
-  offlineAccess: true,
-});
 
 interface AuthContextType {
   googleToken: string | null;
@@ -60,6 +61,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const checkUser = async () => {
+      if (!WEB_CLIENT_ID) {
+        console.log('AuthProvider: Skipping silent sign-in because WEB_CLIENT_ID is not configured.');
+        return;
+      }
       try {
         console.log('AuthProvider: Checking for previous sign-in...');
         const userInfo = await GoogleSignin.signInSilently();
@@ -88,6 +93,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const refreshGoogleToken = async () => {
+    if (!WEB_CLIENT_ID) return null;
     try {
       console.log('AuthProvider: Refreshing google token...');
       await GoogleSignin.signInSilently();
