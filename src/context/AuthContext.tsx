@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const WEB_CLIENT_ID = process.env.EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID;
 
@@ -73,12 +73,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           return;
         }
         const userObj = userInfo.data.user;
-        
+
         if (userObj) {
           console.log('AuthProvider: Silent sign-in success for', userObj.name);
           setUserName(userObj.givenName || userObj.name || "User");
           setUserImage(userObj.photo || null);
-          
+
           const tokens = await GoogleSignin.getTokens();
           if (tokens && tokens.accessToken) {
             setGoogleToken(tokens.accessToken);
