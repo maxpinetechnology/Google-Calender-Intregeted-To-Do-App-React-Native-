@@ -43,12 +43,12 @@ export default function AboutScreen() {
           <View style={styles.heroSection}>
             <View style={[styles.logoContainer, { backgroundColor: theme.surface }]}>
               <Image 
-                source={require('@/assets/images/appicon.png')} 
+                source={require('@/assets/maxtrack_icon_no_text.png')} 
                 style={styles.logo}
                 resizeMode="contain"
               />
             </View>
-            <ThemedText style={[styles.appName, { color: theme.primary }]}>Maxpine Flow</ThemedText>
+            <ThemedText style={[styles.appName, { color: theme.primary }]}>MaxTrack</ThemedText>
             <ThemedText style={[styles.appVersion, { color: theme.textSecondary }]}>Version 1.0.0</ThemedText>
           </View>
         </RevealUp>
@@ -57,7 +57,7 @@ export default function AboutScreen() {
           <View style={[styles.card, { backgroundColor: theme.surface, borderColor: theme.border }]}>
             <ThemedText style={[styles.cardTitle, { color: theme.primary }]}>Our Mission</ThemedText>
             <ThemedText style={[styles.cardText, { color: theme.textSecondary }]}>
-              Maxpine Flow is designed to simplify your daily planning. By seamlessly integrating with your Google Calendar, we provide a unified view of your commitments and tasks, helping you achieve more every day.
+              MaxTrack is designed to simplify your daily planning. By seamlessly integrating with your Google Calendar, we provide a unified view of your commitments and tasks, helping you achieve more every day.
             </ThemedText>
           </View>
         </RevealUp>
@@ -88,7 +88,7 @@ export default function AboutScreen() {
 
         <View style={styles.footer}>
           <ThemedText style={[styles.footerText, { color: theme.textSecondary }]}>Made to increase your productivity</ThemedText>
-          <ThemedText style={[styles.copyright, { color: theme.textSecondary, opacity: 0.5 }]}>© 2026 Maxpine Flow Inc.</ThemedText>
+          <ThemedText style={[styles.copyright, { color: theme.textSecondary, opacity: 0.5 }]}>© 2026 MaxTrack Inc.</ThemedText>
         </View>
       </ScrollView>
     </ThemedView>

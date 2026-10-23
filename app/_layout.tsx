@@ -23,15 +23,15 @@ function RootLayoutNav() {
   const { isGoogleConnected } = useAuth();
   const router = useRouter();
   const { isDark } = useAppTheme();
-  const [loaded] = useFonts({
+  const [loaded, error] = useFonts({
     Roboto_400Regular,
     Roboto_700Bold,
     Roboto_900Black,
   });
 
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
+    if (loaded || error) {
+      SplashScreen.hideAsync().catch(() => {});
       
       // Redirect to onboarding if not connected
       if (!isGoogleConnected) {
@@ -41,9 +41,9 @@ function RootLayoutNav() {
         }, 100);
       }
     }
-  }, [loaded, isGoogleConnected, router]);
+  }, [loaded, error, isGoogleConnected, router]);
 
-  if (!loaded) {
+  if (!loaded && !error) {
     return null;
   }
 

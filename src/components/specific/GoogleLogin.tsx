@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Alert, StyleSheet, TouchableOpacity, View, ActivityIndicator } from "react-native";
-import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
-import { Ionicons } from "@expo/vector-icons";
-import { useAppTheme } from "@/context/ThemeContext";
-import { Fonts, Shadows, Spacing, BorderRadius } from "@/constants/theme";
 import { ThemedText } from "@/components/common/themed-text";
-import * as Haptics from "expo-haptics";
+import { BorderRadius, Fonts, Shadows, Spacing } from "@/constants/theme";
 import { useAuth } from "@/context/AuthContext";
+import { useAppTheme } from "@/context/ThemeContext";
+import { Ionicons } from "@expo/vector-icons";
+import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
+import * as Haptics from "expo-haptics";
+import { useState } from "react";
+import { ActivityIndicator, Alert, StyleSheet, TouchableOpacity, View } from "react-native";
 
 export default function GoogleLogin({ onSuccess }: { onSuccess?: (token: string) => void }) {
   const { colors: theme } = useAppTheme();
@@ -23,20 +23,20 @@ export default function GoogleLogin({ onSuccess }: { onSuccess?: (token: string)
     try {
       console.log('GoogleLogin: Checking play services...');
       await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-      
+
       console.log('GoogleLogin: Calling signIn()...');
       const userInfo = await GoogleSignin.signIn();
       if (userInfo.type !== "success") {
         return;
       }
       console.log('GoogleLogin: signIn success. userInfo structure:', Object.keys(userInfo));
-      
+
       const userObj = userInfo.data.user;
       if (userObj) {
         const name = userObj.givenName || userObj.name || "User";
         console.log('GoogleLogin: setting user name to', name);
         setUserName(name);
-        
+
         if (userObj.photo) {
           console.log('GoogleLogin: setting user image');
           setUserImage(userObj.photo);
@@ -57,7 +57,7 @@ export default function GoogleLogin({ onSuccess }: { onSuccess?: (token: string)
     } catch (error: unknown) {
       const errorCode =
         typeof error === "object" && error !== null && "code" in error &&
-        typeof error.code === "string"
+          typeof error.code === "string"
           ? error.code
           : null;
 

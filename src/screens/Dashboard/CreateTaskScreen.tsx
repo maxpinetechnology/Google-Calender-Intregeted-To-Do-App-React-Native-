@@ -192,7 +192,7 @@ export default function AdvancedCreateTaskScreen() {
         text: s.text,
         done: s.completed
       }));
-      addTask(title, dateStr, timeStr, priority, category, mappedSubtasks, '10m Before', description);
+      addTask(title, dateStr, timeStr, priority, category, mappedSubtasks, '10m Before', undefined, description);
       router.back();
     }
   };
@@ -245,7 +245,7 @@ export default function AdvancedCreateTaskScreen() {
               <View style={[styles.smartInputBox, { backgroundColor: theme.secondary + '15' }]}>
                 <Ionicons name="sparkles" size={14} color={theme.accent} />
                 <ThemedText style={[styles.smartInputText, { color: theme.accent }]}>
-                  Try &quot;Meeting with Raj tomorrow at 5pm&quot;
+                  Try &quot;Team meeting tomorrow at 5pm&quot;
                 </ThemedText>
               </View>
             </View>
